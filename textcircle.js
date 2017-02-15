@@ -4,6 +4,7 @@ if (Meteor.isClient){
 	Template.editor.helpers({
 		docid: function(){
 			console.log("hiiiiiiiiiiiiiiiiiiii");
+			console.log(Documents.findOne());
 			var doc = Documents.findOne();
 			if (doc){
 				return doc._id;
@@ -11,9 +12,6 @@ if (Meteor.isClient){
 			else{
 				return undefined;
 			}
-			// console.log(Documents.findOne());
-			// return Documents.findOne()._id;
-
 		}
 
 	});
@@ -23,8 +21,8 @@ if (Meteor.isClient){
 if (Meteor.isServer){
 	Meteor.startup(function(){
 		// code to run on server at startup
-		if (!Documents.findOne()){
-			Documents.insert({title:"my first doc"});
+		if (!Documents.findOne()){ // no document yet!
+			Documents.insert({title:"my new document"});
 		}
-	})
+	});
 }
