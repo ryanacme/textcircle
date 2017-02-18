@@ -1,5 +1,6 @@
 this.Documents = new Mongo.Collection("documents");
 
+var myVar = 12;
 if (Meteor.isClient){
 
 	Meteor.setInterval(function(){
@@ -9,7 +10,10 @@ if (Meteor.isClient){
 	Template.date_display.helpers({
 		current_date: function(){
 			return Session.get("current_date");
-		}// helper dcurrent_date
+		},// helper dcurrent_date
+		myVar: function(){
+			return myVar;
+		},
 	}); // Template helpers
 
 	Template.editor.helpers({
