@@ -11,7 +11,14 @@ if (Meteor.isClient){
 			else{
 				return undefined;
 			}
-		} // helper docid
+		}, // helper docid
+		config: function(){
+			return function(editor){
+				editor.on("change", function(cm_editor,info){
+					$("#viewer-iframe").contents().find("html").html(cm_editor.getValue());
+				}); // editor event listener
+			} // return function
+		}, // helper config
 	}); // Template helpers	
 } // if Meteor.isClient
 
