@@ -15,6 +15,8 @@ if (Meteor.isClient){
 		}, // helper docid
 		config: function(){
 			return function(editor){
+				editor.setOption("lineNumbers", true);
+				editor.setOption("theme", "cobalt");
 				editor.on("change", function(cm_editor,info){
 					$("#viewer-iframe").contents().find("html").html(cm_editor.getValue());
 					Meteor.call("addEditingUser");

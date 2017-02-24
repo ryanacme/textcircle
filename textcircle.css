@@ -1,3 +1,9 @@
 .top-margin{
 	margin-top:70px;
 }
+
+#viewer-iframe{
+	border: 1px solid gray;
+    resize: both;
+    width: 100%;
+}
