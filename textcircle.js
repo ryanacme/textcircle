@@ -40,8 +40,20 @@ if (Meteor.isClient){
 			}
 			return users;
 
-		},
-	});
+		}, // users helper
+	}); // Template helpers
+
+	////////////////
+	/////EVENTS/////
+	////////////////
+
+	Template.navbar.events({
+		"click .js-add-doc": function(event){
+			event.preventDefault();
+			console.log("Add a new doc!");
+		}, // js-add-doc event
+	}); // Template events
+
 } // if Meteor.isClient
 
 if (Meteor.isServer){
