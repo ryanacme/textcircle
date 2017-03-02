@@ -5,13 +5,15 @@ if (Meteor.isClient){
 
 	Template.editor.helpers({
 		docid: function(){
-			var doc = Documents.findOne();
-			if (doc){
-				return doc._id;
-			}
-			else{
-				return undefined;
-			}
+			setupCurrentDocument();
+			return Session.get("docid");
+			// var doc = Documents.findOne();
+			// if (doc){
+			// 	return doc._id;
+			// }
+			// else{
+			// 	return undefined;
+			// }
 		}, // helper docid
 		config: function(){
 			return function(editor){
@@ -127,6 +129,15 @@ Meteor.methods({
 	} // / addEditingUser method
 }); // /Methods function
 
+function setupCurrentDocument(){
+	var doc;
+	if (!Session.get("docid")){
+		doc = Documents.findOne();
+		if(doc){
+			Session.set("docid", doc._id);
+		} // if
+	} // if
+}// function
 
 function fixObjectKeys(obj){
 	var newObj = {};
