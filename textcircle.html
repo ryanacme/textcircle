@@ -10,6 +10,12 @@
 	<div class="container top-margin">
 		<div class="row">
 			<div class="col-md-12">
+				{{> docMeta}}
+			</div>
+		</div> <!-- / row -->
+
+		<div class="row">
+			<div class="col-md-12">
 				{{> editingUsers}}
 			</div>
 		</div> <!-- / row -->
@@ -64,6 +70,12 @@
 	</iframe>
 </template>
 
+
+<template name="docMeta">
+	{{#with document }}
+	<span class="h1">{{> editableText collection="documents" field="title"}}</span>
+	{{/with}}
+</template>
 
 <template name="editingUsers">
 	Editors: 

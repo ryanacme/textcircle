@@ -51,6 +51,25 @@ if (Meteor.isClient){
 		} // documents Template helper
 	}); // Template Helpers
 
+	Template.docMeta.helpers({
+		document: function(){
+			var doc = Documents.findOne({_id:Session.get("docid")});
+			return doc;
+		},
+	});
+
+	Template.editableText.helpers({
+		userCanEdit: function(doc, Collection){
+			var doc = Documents.findOne({_id:Session.get("docid"), owner:Meteor.userId()});
+			if (doc){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	});
+
 	////////////////
 	/////EVENTS/////
 	////////////////
