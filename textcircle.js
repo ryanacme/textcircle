@@ -45,11 +45,22 @@ if (Meteor.isClient){
 		}, // users helper
 	}); // Template helpers
 
+	Template.navbar.helpers({
+		documents: function(){
+			return Documents.find({});
+		} // documents Template helper
+	}); // Template Helpers
+
 	////////////////
 	/////EVENTS/////
 	////////////////
 
 	Template.navbar.events({
+		"click .js-load-doc": function(event){
+			console.log(this)
+			Session.set("docid", this._id);
+		}, // js-load-doc event
+
 		"click .js-add-doc": function(event){
 			event.preventDefault();
 			console.log("Add a new doc!");
