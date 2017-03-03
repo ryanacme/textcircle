@@ -57,7 +57,13 @@ if (Meteor.isClient){
 				alert("You need to log in first!");
 			}
 			else{ // they have logged in
-				Meteor.call("addDoc");
+				var id = Meteor.call("addDoc", function(err, res){
+					if(!err){
+						console.log("2- event callback received id: "+res);
+						Session.set("docid", res);
+					}
+				});
+				console.log("3- event got and id back: "+id);
 			}
 		}, // js-add-doc event
 	}); // Template events
@@ -81,7 +87,9 @@ Meteor.methods({
 		}
 		else{ // there is a user
 			doc = {owner:this.userId, createdOn: new Date(), title: "a new doc"};
-			Documents.insert(doc);
+			var id = Documents.insert(doc);
+			console.log("1- addDoc method got an id: "+id);
+			return id;
 		}
 	},
 	addEditingUser:function(){
