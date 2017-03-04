@@ -59,6 +59,15 @@ if (Meteor.isClient){
 			var doc = Documents.findOne({_id:Session.get("docid")});
 			return doc;
 		},
+		canEdit: function(){
+			var doc = Documents.findOne({_id:Session.get("docid")});
+			if (doc){
+				if (doc.owner == Meteor.userId()){
+					return true;
+				}
+			}
+			return false;
+		}
 	});
 
 	Template.editableText.helpers({
@@ -120,8 +129,12 @@ if (Meteor.isServer){
 		}
 	}); // startup
 	Meteor.publish("documents", function(){
-		return Documents.find({isPrivate:false});
-		// return Documents.find({});
+		return Documents.find({
+			$or:[
+				{isPrivate:false},
+				{owner:this.userId},
+				]
+			});
 	});
 	Meteor.publish("editingUsers", function(){
 		return EditingUsers.find();
