@@ -1,14 +1,16 @@
 Meteor.startup(function(){
 	// code to run on server at startup
 	if (!Documents.findOne()){ // no document yet!
-		Documents.insert({title:"my new document"});
+		Documents.insert({title:"Document created by the server"});
 	}
 }); // startup
 
 Meteor.publish("documents", function(){
+	console.log(this.userId);
 	return Documents.find({
 		$or:[
-			{isPrivate:false},
+			{isPrivate:{$ne:true}},
+			// {isPrivate:false},
 			{owner:this.userId},
 			]
 		});
