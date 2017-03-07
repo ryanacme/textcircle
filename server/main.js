@@ -6,7 +6,6 @@ Meteor.startup(function(){
 }); // startup
 
 Meteor.publish("documents", function(){
-	console.log(this.userId);
 	return Documents.find({
 		$or:[
 			{isPrivate:{$ne:true}},
