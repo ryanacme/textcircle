@@ -18,6 +18,21 @@ Meteor.methods({
 			return id;
 		}
 	},
+
+	delDoc: function(doc){
+		var doc;
+		console.log(doc);
+		if (!this.userId){ // no logged in user
+			return;
+		}
+		else{ // there is a user
+			// doc = {owner:this.userId, createdOn: new Date(), title: "a new doc"};
+			Documents.remove(doc);
+			// console.log("1- addDoc method got an id: "+id);
+			// return id;
+		}
+	},
+
 	addEditingUser:function(docid){
 		var doc, user, eusers;
 		doc = Documents.findOne({_id:docid});

@@ -105,9 +105,10 @@ Template.docList.helpers({
 ////////////////
 
 Template.navbar.events({
-	"click .js-load-doc": function(event){
+	"click .js-delete-doc": function(event){
 		console.log(this)
-		Session.set("docid", this._id);
+		Meteor.call("delDoc", this);
+		// Session.set("docid", this._id);
 	}, // js-load-doc event
 
 	"click .js-add-doc": function(event){
