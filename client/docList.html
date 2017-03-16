@@ -1,12 +1,22 @@
 <template name="docList">
 	<div class="container top-margin">
-    	<div class="row">
-	  		{{#each documents}}
-	  			<div class="col-md-3 col-xs-6 light-border">
-
-					<a href="/documents/{{_id}}"> {{title}} </a>
-				</div>
-	  		{{/each}}
-		</div>
+		<div class="row">
+  		{{#each documents}}
+  		<div class="col-md-3 col-xs-6" id="{{_id}}">
+  			<!-- <div class="light-border"> -->
+        <div class="block">
+          <!-- <h5>{{_id}}</h5> -->
+          <a href="/documents/{{_id}}"> 
+            <div class="well">
+              <div class="docList text-primary">
+  				      {{title}}
+              </div>
+            </div>
+          </a>
+          <button type="button" class="btn btn-danger btn-sm btnStyle js-delete-doc">Delete</button>
+        </div>
+  		</div>
+  		{{/each}}
+  		</div>
 	</div>
 </template>

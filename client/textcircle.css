@@ -11,3 +11,24 @@
 .light-border{
 	border: 1px solid gray;
 }
+
+.well {
+    background-color: Lavender;
+}
+
+.docList{
+	white-space: nowrap;
+    font-size: 15px;
+    font-weight: bold;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.btnStyle{
+	/*padding: 40*/
+}
+
+.block{
+	min-height: 200px;
+}

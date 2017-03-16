@@ -106,7 +106,7 @@ Template.docList.helpers({
 
 Template.navbar.events({
 	"click .js-delete-doc": function(event){
-		console.log(this)
+		console.log(this);
 		Meteor.call("delDoc", this);
 		// Session.set("docid", this._id);
 	}, // js-load-doc event
@@ -138,6 +138,13 @@ Template.docMeta.events({
 	},
 });
 
+Template.docList.events({
+	"click .js-delete-doc": function(event){
+		console.log(this);
+		Meteor.call("delDoc", this);
+		// Session.set("docid", this._id);
+	}, // js-load-doc event
+});
 
 function setupCurrentDocument(){
 	var doc;

@@ -22,14 +22,18 @@ Meteor.methods({
 	delDoc: function(doc){
 		var doc;
 		console.log(doc);
+		var doc_id = doc._id;
+		console.log(doc_id);
 		if (!this.userId){ // no logged in user
 			return;
 		}
 		else{ // there is a user
 			// doc = {owner:this.userId, createdOn: new Date(), title: "a new doc"};
-			Documents.remove(doc);
+			$("#"+doc_id).hide('slow', function(){
+				Documents.remove(doc);
 			// console.log("1- addDoc method got an id: "+id);
 			// return id;
+			});
 		}
 	},
 
